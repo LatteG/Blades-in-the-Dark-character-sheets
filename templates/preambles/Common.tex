@@ -1,0 +1,179 @@
+% Sets to landscape and removes margin
+\usepackage[landscape, margin=0cm]{geometry}
+
+% Removes indents at the start of paragraphs
+\usepackage[parfill]{parskip}
+
+% Misc maths stuff
+\usepackage{amsmath}
+
+% Used for setting the background
+\usepackage{pdfoverlay}
+
+% Used for positioning text
+\usepackage[absolute, overlay]{textpos}
+
+% Used for drawing stuff
+\usepackage{tikz}
+\usetikzlibrary{math}
+
+% Used to do stuff with strings
+\usepackage{xstring}
+
+% Setting the font
+\usepackage[T1]{fontenc}
+\usepackage{Alegreya} %% Option 'black' gives heavier bold face 
+\renewcommand*\oldstylenums[1]{{\AlegreyaOsF #1}}
+
+% Used to easily call the correct class template
+\newcommand{\Template}{templates/\Class.tex}
+
+% If "Mule" is chosen as a veteran skill
+\def\MuleX{23.47cm}
+\def\MuleY{-11.12cm}
+\def\MuleW{0.165cm}
+\def\MuleH{0.23cm}
+
+\def\MuleNormalXOffset{1cm}
+\def\MuleHeavyXOffset{2.29cm}
+
+
+%%% Utility
+%% For underlining stuff like background, trauma, etc.
+\newcommand{\UnderlineTikz}[3]{\draw (#1, #3) -- (#1 + #2, #3);}
+
+
+%%% Adding additional XP-boxes
+%% Toggle scaling
+\newif\ifscalexp
+%% Define geometry
+\def\XPBoxWidth{0.148cm}
+\def\XPBoxLeftHeight{0.425cm}
+\def\XPBoxRightHeight{0.31cm}
+\def\XPBoxSepYOffset{0.0065cm}
+\def\XPBoxSepWidth{0.06cm}
+\def\XPBoxSepHeight{0.316cm}
+\def\XPBoxLineWidth{0.019cm}
+\tikzmath{
+    \XPBoxXOffset = \XPBoxWidth + \XPBoxSepWidth;
+}
+\newcommand{\AddXPBox}[3]{%
+    \draw[#3, line width=\XPBoxLineWidth] 
+        (#1,               #2                   )
+     -- (#1 + \XPBoxWidth, #2                    )
+     -- (#1 + \XPBoxWidth, #2 - \XPBoxRightHeight)
+     -- (#1,               #2 - \XPBoxLeftHeight )
+     -- cycle;
+    \fill[#3] (#1,                  #2 + \XPBoxSepYOffset                  )
+           -- (#1 - \XPBoxSepWidth, #2 + \XPBoxSepYOffset                  )
+           -- (#1 - \XPBoxSepWidth, #2 + \XPBoxSepYOffset - \XPBoxSepHeight)
+           -- (#1,                  #2 + \XPBoxSepYOffset - \XPBoxSepHeight)
+           -- cycle;
+}
+
+
+%%% Heritage underlining
+\newcommand{\DrawHeritageLines}{%
+    \IfSubStr{\Heritage}{akoros}{
+        \UnderlineTikz{2.9cm}{1.10cm}{-5.2cm}
+    }{}
+    \IfSubStr{\Heritage}{the dagger isles}{
+        \UnderlineTikz{4.35cm}{2.95cm}{-5.2cm}
+    }{}
+    \IfSubStr{\Heritage}{iruvia}{
+        \UnderlineTikz{1.275cm}{0.9cm}{-5.52cm}
+    }{}
+    \IfSubStr{\Heritage}{severos}{
+        \UnderlineTikz{2.5cm}{1.1cm}{-5.52cm}
+    }{}
+    \IfSubStr{\Heritage}{skovlan}{
+        \UnderlineTikz{3.91cm}{1.2cm}{-5.52cm}
+    }{}
+    \IfSubStr{\Heritage}{tycheros}{
+        \UnderlineTikz{5.430cm}{1.35cm}{-5.52cm}
+    }{}
+}
+
+
+%%% Background underlining
+\newcommand{\DrawBackgroundLines}{%
+    \IfSubStr{\Background}{academic}{\UnderlineTikz{   9.73cm}{1.47cm}{-5.20cm}}{}
+    \IfSubStr{\Background}{labor}{\UnderlineTikz{     11.53cm}{0.90cm}{-5.20cm}}{}
+    \IfSubStr{\Background}{law}{\UnderlineTikz{       12.75cm}{0.60cm}{-5.20cm}}{}
+    \IfSubStr{\Background}{trade}{\UnderlineTikz{      7.63cm}{0.87cm}{-5.52cm}}{}
+    \IfSubStr{\Background}{military}{\UnderlineTikz{   8.80cm}{1.22cm}{-5.52cm}}{}
+    \IfSubStr{\Background}{noble}{\UnderlineTikz{     10.33cm}{0.88cm}{-5.52cm}}{}
+    \IfSubStr{\Background}{underworld}{\UnderlineTikz{11.50cm}{1.80cm}{-5.52cm}}{}
+}
+
+
+%%% Vice underlining
+\newcommand{\DrawViceLines}{%
+    \IfSubStr{\Vice}{faith}{\UnderlineTikz{     3.670cm}{0.78cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{gambling}{\UnderlineTikz{  4.750cm}{1.38cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{luxury}{\UnderlineTikz{    6.420cm}{1.00cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{obligation}{\UnderlineTikz{7.720cm}{1.60cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{pleasure}{\UnderlineTikz{  9.620cm}{1.25cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{stupor}{\UnderlineTikz{   11.175cm}{1.03cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{weird}{\UnderlineTikz{    12.520cm}{0.80cm}{-6.68cm}}{}
+}
+
+
+%%% Trauma
+%% Counter
+\newcounter{TraumaAmount}
+%% Underlining
+\newcommand{\DrawTraumaLines}{%
+    \IfSubStr{\Trauma}{cold}{
+        \UnderlineTikz{7.15cm}{0.75cm}{-7.35cm}
+        \stepcounter{TraumaAmount}
+    }{}
+    \IfSubStr{\Trauma}{haunted}{
+        \UnderlineTikz{8.28cm}{1.40cm}{-7.35cm}
+        \stepcounter{TraumaAmount}
+    }{}
+    \IfSubStr{\Trauma}{obsessed}{
+        \UnderlineTikz{10.03cm}{1.40cm}{-7.35cm}
+        \stepcounter{TraumaAmount}
+    }{}
+    \IfSubStr{\Trauma}{paranoid}{
+        \UnderlineTikz{11.83cm}{1.50cm}{-7.35cm}
+        \stepcounter{TraumaAmount}
+    }{}
+    \IfSubStr{\Trauma}{reckless}{
+        \UnderlineTikz{7.15cm}{1.50cm}{-7.67cm}
+        \stepcounter{TraumaAmount}
+    }{}
+    \IfSubStr{\Trauma}{soft}{
+        \UnderlineTikz{9.00cm}{0.75cm}{-7.67cm}
+        \stepcounter{TraumaAmount}
+    }{}
+    \IfSubStr{\Trauma}{unstable}{
+        \UnderlineTikz{10.10cm}{1.60cm}{-7.67cm}
+        \stepcounter{TraumaAmount}
+    }{}
+    \IfSubStr{\Trauma}{vicious}{
+        \UnderlineTikz{12.08cm}{1.25cm}{-7.67cm}
+        \stepcounter{TraumaAmount}
+    }{}
+}
+
+
+%%% Define macro for covering notes lines
+%% For toggling notes lines
+\newif\ifhidenoteslines
+
+%% Coordinates
+\def\NotesX{1.25cm}
+\def\NotesY{-11cm}
+\def\NotesWidth{12.395cm}
+\def\NotesHeight{9.1cm}
+
+%% Macro
+\newcommand{\HideNotesLines}{
+    \fill[white] (\NotesX,               \NotesY)
+              -- (\NotesX + \NotesWidth, \NotesY)
+              -- (\NotesX + \NotesWidth, \NotesY - \NotesHeight)
+              -- (\NotesX,               \NotesY - \NotesHeight)
+              -- cycle;
+}

@@ -1,0 +1,34 @@
+%%% Special abilities
+\tikzmath{\SpecialAbilitiesAmnt = 0;}
+\IfSubStr{\SpecialAbilities}{alchemist}{
+    \fill[black] (\SpecialX, -3.07cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{analyst}{  
+    \fill[black] (\SpecialX, -4.10cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{artificer}{
+    \fill[black] (\SpecialX, -5.13cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{fortitude}{
+    \fill[black] (\SpecialX, -6.16cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{ghost ward}{
+    \fill[black] (\SpecialX, -7.19cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{physicker}{
+    \fill[black] (\SpecialX, -7.90cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{saboteur}{
+    \fill[black] (\SpecialX, -8.93cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{venomous}{
+    \fill[black] (\SpecialX, -9.64cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}

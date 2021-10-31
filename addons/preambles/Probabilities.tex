@@ -1,0 +1,69 @@
+\newif\ifexpectedvalue
+
+\newcommand{\SuccessProbability}[1]{
+    \ifnum#1<1
+        % This calculation is only to make typesetting more consistent easier
+        \pgfmathparse{100/4}
+        \pgfmathprintnumber{\pgfmathresult}\%
+    \else
+        \pgfmathparse{(1 - 0.5^#1) * 100}
+        \pgfmathprintnumber{\pgfmathresult}\%
+    \fi
+}
+
+\newcommand{\ExpectedSum}[1]{
+    \pgfmathparse{1^(#1) + 2^(#1) + 3^(#1) + 4^(#1) + 5^(#1)}
+}
+
+\newcommand{\ExpectedValue}[1]{
+    \ifnum#1<1
+        \ExpectedSum{2}
+        \pgfmathparse{1 + 6^(-2) * \pgfmathresult}
+    \else
+        \ExpectedSum{#1}
+        \pgfmathparse{6 - 6^(-#1) * \pgfmathresult}
+    \fi
+    E = \pgfmathprintnumber{\pgfmathresult}
+}
+
+\newcommand{\OverindulgeRisk}[2]{
+    \ifnum#1<1
+        \pgfmathparse{(((6-#2)/6)^2)*100}
+    \else
+        \pgfmathparse{(1-((#2)/6)^#1)*100}
+    \fi
+    \pgfmathprintnumber{\pgfmathresult}\%
+}
+
+\newcommand{\InsightCalc}{
+    \pgfmathtruncatemacro{\InsightVal}{min(\Hunt, 1) 
+                                     + min(\Study, 1)
+                                     + min(\Survey, 1)
+                                     + min(\Tinker, 1)}
+}
+
+\newcommand{\ProwessCalc}{
+    \pgfmathtruncatemacro{\ProwessVal}{min(\Finesse, 1) 
+                                     + min(\Prowl, 1)
+                                     + min(\Skirmish, 1)
+                                     + min(\Wreck, 1)}
+}
+
+\newcommand{\ResolveCalc}{
+    \pgfmathtruncatemacro{\ResolveVal}{min(\Attune, 1) 
+                                     + min(\Command, 1)
+                                     + min(\Consort, 1)
+                                     + min(\Sway, 1)}
+}
+
+\newcommand{\ViceAttributeCalc}{
+    \pgfmathtruncatemacro{\ViceVal}{min(\InsightVal, min(\ProwessVal, \ResolveVal))}
+}
+
+\newcommand{\AttributeFormat}[1]{
+    \textcolor{white}{\scriptsize{#1}}
+}
+
+\newcommand{\ActionFormat}[1]{
+    \scriptsize{#1}
+}

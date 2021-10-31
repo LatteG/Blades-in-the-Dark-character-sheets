@@ -1,0 +1,49 @@
+\usepackage[parfill]{parskip}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{stringstrings}
+\usepackage{etoolbox}
+
+\input{misc_sheets/template/Font}
+
+%%% Misc helper macros
+\newcommand{\toroman}[1]{\uppercase\expandafter{\romannumeral#1\relax}}
+
+%%% Format for creation categories
+\newcommand{\category}[2]{\section*{\uppercase{#1} \small{(\uppercase{\normalfont{#2}})}}}
+
+%%% Format for creations
+\newcommand{\creation}[3]{$\blacklozenge$ \textbf{#1} \small{(\toroman#2/#3)}:}
+\newcommand{\specialcreation}[4]{$\blacklozenge$ \textbf{#1} \small{(\toroman#2/#3, \uppercase{#4})}:}
+
+%%% Format for creations with info about bandolier-compatibility
+\newcommand{\tobandnotation}[1]{
+    \ifnum#1=0 \textbf{G} \fi
+    \ifnum#1=1 \textbf{b} \fi
+    \ifnum#1=2 \textbf{B} \fi
+}
+\newcommand{\bandcreation}[4]{
+    $\blacklozenge$ \textbf{#1} \small{(\toroman#2/#3), \tobandnotation{#4}}:
+}
+\newcommand{\bandspecialcreation}[5]{
+    $\blacklozenge$ \textbf{#1} \small{(\toroman#2/#3), \tobandnotation{#5}, \uppercase{#4}}:
+}
+
+%%% Format for skill names
+\newcommand{\skillname}[1]{\textsc{#1}}
+
+%%% Format for suffering harm
+\newcommand{\sufferharm}[2]{suffer level #1 harm (``#2'')}
+\newcommand{\suffertempharm}[2]{suffer level #1 temporary harm (``#2'')}
+
+%%% Format for harm
+\newcommand{\harm}[2]{``#2'' lvl #1 harm}
+
+%%% Format item list more closely to how it is in the book
+\renewcommand\labelitemi{$\blacklozenge$}
+\newcommand{\labeleditem}[1]{\item \textbf{#1}:}
+
+%%% Add text about inventory
+\newcommand{\HasAmount}{\\Crafted: \_\_}
+\newcommand{\HasAmountRare}{\\Crafted: \_\_\hspace{10pt}Resources: \_\_}

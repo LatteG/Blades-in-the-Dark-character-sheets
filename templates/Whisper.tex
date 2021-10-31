@@ -1,0 +1,34 @@
+%%% Special abilities
+\tikzmath{\SpecialAbilitiesAmnt = 0;}
+\IfSubStr{\SpecialAbilities}{compel}{
+    \fill[black] (\SpecialX,  -3.065cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{ghost mind}{
+    \fill[black] (\SpecialX,  -4.136cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{iron will}{
+    \fill[black] (\SpecialX,  -4.885cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{occultist}{
+    \fill[black] (\SpecialX,  -5.633cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{ritual}{
+    \fill[black] (\SpecialX,  -6.705cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{strange methods}{
+    \fill[black] (\SpecialX,  -7.777cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{tempest}{
+    \fill[black] (\SpecialX,  -8.848cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{warded}{
+    \fill[black] (\SpecialX,  -9.920cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}

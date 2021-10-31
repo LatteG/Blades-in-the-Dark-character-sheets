@@ -1,0 +1,34 @@
+%%% Special abilities
+\tikzmath{\SpecialAbilitiesAmnt = 0;}
+\IfSubStr{\SpecialAbilities}{foresight}{
+    \fill[black] (\SpecialX, -3.065cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{calculating}{
+    \fill[black] (\SpecialX, -3.805cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{connected}{
+    \fill[black] (\SpecialX, -4.585cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{functioning vice}{
+    \fill[black] (\SpecialX, -5.360cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{ghost contract}{
+    \fill[black] (\SpecialX, -6.420cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{jail bird}{
+    \fill[black] (\SpecialX, -7.485cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{mastermind}{
+    \fill[black] (\SpecialX, -8.545cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{weaving the web}{
+    \fill[black] (\SpecialX, -9.610cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}

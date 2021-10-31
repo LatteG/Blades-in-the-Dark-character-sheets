@@ -1,0 +1,114 @@
+\documentclass{article}
+
+%%% Landscape
+\usepackage[landscape]{geometry}
+
+%%% Multiple columns
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\input{misc_sheets/template/Craftables.tex}
+
+%%% Used for header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Leech}
+\chead{Bandolier}
+\rhead{Cheat Sheet}
+
+%%% Reduce amount of space around sections
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{3ex}{0ex}
+\titlespacing{\subsection}{0pt}{0ex}{0ex}
+\titlespacing{\subsubsection}{0pt}{0ex}{0ex}
+
+\begin{document}
+\begin{multicols*}{3}
+\category{Bombs}{Spark-Craft}
+Drawback (Conspicuous).
+\\\\
+% Grenade
+\creation{Grenade}{3}{2}
+A small explosive charge with a short fuse that detonates into metal shrapnel.
+\\\\
+% Smoke Bomb
+\creation{Smoke Bomb}{2}{2}
+Creates a cloud of acrid smoke that's difficult to breathe and stings the eyes.
+
+
+\category{Drugs}{Alchemical}
+Drawback (Volatile): ``Woozy'' lvl 1 harm.
+\\\\
+% Quicksilver
+\creation{Quicksilver}{4}{1}
+\textit{A toxic metallic fluid.
+The user's mind opens further to the ghost field.}
+Take +1d to \skillname{Attune} roll upon use, \suffertempharm{2}{Zoned-out}.
+\\\\
+% Spark
+\creation{Spark}{1}{3}
+\textit{A measure of raw electroplasm blended with seawater.
+The user feels empowered and emits mild electrical energy.}
+\\\\
+% Trance Powder
+\creation{Trance Powder}{1}{3}
+\textit{A glittering blue powder.
+Induces a pleasant hypnotic trance when inhaled.}
+
+
+\category{Oils}{Alchemical}
+% Alcahest
+\creation{Alcahest}{3}{1}
+\textit{A fluid that stops the effect of any other alchemical.}
+\\\\
+% Binding Oil
+\creation{Binding Oil}{3}{1}
+\textit{Permanently fuses two surfaces until dissolved by alcahest or electroplasm.}
+\\\\
+% Fire Oil
+\creation{Fire Oil}{3}{3}
+\textit{Erupts in searing flame upon contact with air.}
+
+
+\category{Poisons}{Alchemical}
+Drawback (Volatile): ``Sickened'' lvl 1 harm.
+\\\\
+% Drown Powder
+\creation{Drown Powder}{3}{2}
+\textit{A fine dust that incapacitates by giving the sensation of drowning.}
+\\\\
+% Eyeblind
+\creation{Eyeblind}{3}{3}
+\textit{A powder that causes blindness for a moment.}
+\\\\
+% Skullfire
+\creation{Skullfire}{3}{1}
+\textit{Toxic fumes from overly heated leviathan blood.
+Causes incapacitating migraines.}
+\\\\
+% Standstill
+\creation{Standstill}{4}{1}
+\textit{A powder that causes temporary paralysis.}
+
+
+\category{Potions}{Arcane}
+Drawback: 4-clock, ``Accosted by Spirit Wardens'', 1 tick per use.
+
+\section*{Special}
+% Drift Oil
+\specialcreation{Drift Oil}{3}{1}{Arcane}
+\textit{Creates neutral buoyancy when poured on an object, causing it to float in the air for an hour.}
+
+
+\section*{Drawbacks}
+\begin{itemize}
+    \labeleditem{Conspicuous}
+    Take \textbf{+1 \uppercase{heat}} if it's used any number of times on an operation.
+    \labeleditem{Volatile}
+    The item produces a dangerous or troublesome side-effect for the user.
+    A side-effect is a consequence, and may be \textbf{resisted}.
+\end{itemize}
+
+\end{multicols*}
+\end{document}

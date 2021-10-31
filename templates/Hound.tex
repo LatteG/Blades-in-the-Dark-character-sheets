@@ -1,0 +1,47 @@
+%%% Special abilities
+\tikzmath{\SpecialAbilitiesAmnt = 0;}
+\IfSubStr{\SpecialAbilities}{sharpshooter}{ 
+    \fill[black] (\SpecialX, -3.06cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{focused}{
+    \fill[black] (\SpecialX, -4.15cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{scout}{
+    \fill[black] (\SpecialX, -6.67cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{survivor}{
+    \fill[black] (\SpecialX, -7.75cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{tough as nails}{
+    \fill[black] (\SpecialX, -8.84cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{vengeful}{
+    \fill[black] (\SpecialX, -9.59cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+
+%% Ghost Hunter can be taken multiple times
+\StrCount{\SpecialAbilities}{ghost hunter}[\GhostHunterAmnt]
+\ifnum\GhostHunterAmnt>0
+    \def\GhostHunterY{-5.24cm}
+    \tikzmath{\GhostHunterNum = min(1, \GhostHunterAmnt - 1);}
+    
+    \foreach \GhostHunterDot in {0,...,\GhostHunterNum}
+        \fill[black] (\SpecialX + \SpecialXOffset * \GhostHunterDot, \GhostHunterY) circle (\SpecialR);
+    
+    \def\PetAbilityY{-6.02cm}
+    
+    % Pet abilities
+    \IfSubStr{\SpecialAbilities}{ghost hunter:ghost-form}{%
+                                 \UnderlineTikz{17.125cm}{1.325cm}{\PetAbilityY}}{}
+    \IfSubStr{\SpecialAbilities}{ghost hunter:mind-link}{%
+                                 \UnderlineTikz{18.625cm}{1.225cm}{\PetAbilityY}}{}
+    \IfSubStr{\SpecialAbilities}{ghost hunter:arrow-swift}{%
+                                 \UnderlineTikz{20.375cm}{1.400cm}{\PetAbilityY}}{}
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + \GhostHunterAmnt;}
+\fi

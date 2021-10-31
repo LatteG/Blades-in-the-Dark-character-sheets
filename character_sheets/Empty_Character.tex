@@ -1,0 +1,123 @@
+\documentclass{article}
+\input{templates/preambles/Common.tex}
+
+%%% Set class
+\def\Class{Cutter}
+\input{templates/preambles/\Class.tex}
+
+
+%%% Name
+\def\FirstName{First name}
+\def\Surname{Surname}
+\def\Alias{Alias}
+\def\Name{\FirstName{} \Surname{}}
+\def\FullName{\FirstName{} ``\Alias{}'' \Surname}
+
+%% Crew name
+\def\CrewSv{De Ål-Lagliga}
+\def\CrewEng{The Eel-Legal}
+\def\Crew{\CrewSv}
+
+
+%%% Looks
+\def\Gender{Apparent gender}
+\def\BodilyTraits{bodily traits}
+\def\Clothes{clothes}
+\def\Looks{\Gender, \BodilyTraits, \Clothes}
+
+
+%%% Heritage
+\def\HeritageText{Text about heritage}
+\lowercase{\def\Heritage{}}
+
+
+%%% Background
+\def\BackgroundText{Text about background}
+\lowercase{\def\Background{}}
+
+
+%%% Vice
+\def\VicePurveyor{Vice purveyor}
+\lowercase{\def\Vice{}}
+
+
+%%% Trauma
+% Trauma boxes are filled in automatically as traumas are chosen
+\lowercase{\def\Trauma{}}
+
+
+%%% Crew upgrades
+\lowercase{\def\CrewUpgrades{}}
+
+
+%%% Friends and enemies/rivals (zero-indexed)
+\def\Friend{-1}
+\def\Enemy{-1}
+
+
+%%% Stash
+\def\StashAmount{0}
+
+
+%%% Skills
+%% Insight
+\def\Hunt{0}
+\def\Study{0}
+\def\Survey{0}
+\def\Tinker{0}
+
+%% Prowess
+\def\Finesse{0}
+\def\Prowl{0}
+\def\Skirmish{0}
+\def\Wreck{0}
+
+%% Resolve
+\def\Attune{0}
+\def\Command{0}
+\def\Consort{0}
+\def\Sway{0}
+
+
+%%% Special abilities, just write them in as they are written in the playbook, including spaces
+\lowercase{\def\SpecialAbilities{
+    
+}}
+
+
+%%% Configure XP-scaling
+\scalexptrue
+\def\StartAttributeScaling{5}
+\def\AttributesPerBox{2}
+\def\StartSpecialScaling{3}
+\def\SpecialSkillsPerBox{1}
+
+
+%%% Notes
+\def\Notes{
+    
+}
+%% Toggle notes lines, best to set to true if you want to add notes via this LaTeX
+\hidenoteslinesfalse
+
+
+%%% Input addon preambles
+
+
+%%% Set addon variables
+
+\begin{document}
+    \pagenumbering{gobble}
+    
+    \input{templates/CommonText}
+    
+    \begin{tikzpicture}[overlay]
+        \input{templates/CommonTikz}
+        \input{\Template}
+        
+        %%% Input tikz addons
+    \end{tikzpicture}
+    
+    
+    %%% Input text addons
+\end{document}

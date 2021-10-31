@@ -1,0 +1,364 @@
+%%% Heritage
+%% Evaluate heritage and draw line
+\DrawHeritageLines
+
+
+%%% Background
+%% Evaluate background and draw line
+\DrawBackgroundLines
+
+
+%%% Vice
+%% Evaluate vice and draw line
+\DrawViceLines
+
+
+%%% Trauma
+%% Underline active traumas
+\DrawTraumaLines
+
+%% Evaluate and fill trauma boxes
+\def\TraumaX{5.717cm}
+\def\TraumaY{-7.265cm}
+\def\TraumaWidth{0.212cm}
+\def\TraumaLeftHeight{0.4cm}
+\def\TraumaRightHeight{0.3cm}
+\def\TraumaGap{0.352cm}
+
+% Handle extra trauma box from crew upgrade
+\IfSubStr{\CrewUpgrades}{trauma box}{%
+    \def\ExtraXOffset{0.275cm}
+    
+    \ifnum\theTraumaAmount>0
+        \def\ExtraTraumaColor{black}
+        \addtocounter{TraumaAmount}{-1}
+    \else
+        \def\ExtraTraumaColor{lightgray!86}
+    \fi
+    
+    \fill[\ExtraTraumaColor] (\TraumaX - \ExtraXOffset, \TraumaY) 
+        -- (\TraumaX - \ExtraXOffset + \TraumaWidth, \TraumaY) 
+        -- (\TraumaX - \ExtraXOffset + \TraumaWidth, \TraumaY - \TraumaRightHeight) 
+        -- (\TraumaX - \ExtraXOffset, \TraumaY - \TraumaLeftHeight) 
+        -- cycle;
+}{}
+
+% Handle standard trauma boxes
+\ifnum\theTraumaAmount>0
+    \tikzmath{
+        \TraumaAmount = min(3, \theTraumaAmount - 1);
+    }
+    
+    \foreach \TraumaNum in {0,...,\TraumaAmount}
+        \fill[black] (\TraumaX + \TraumaGap * \TraumaNum, \TraumaY) 
+        -- (\TraumaX + \TraumaGap * \TraumaNum, \TraumaY - \TraumaLeftHeight) 
+        -- (\TraumaX + \TraumaWidth + \TraumaGap * \TraumaNum, \TraumaY - \TraumaRightHeight) 
+        -- (\TraumaX + \TraumaWidth + \TraumaGap * \TraumaNum, \TraumaY) 
+        -- cycle;
+\fi
+
+%% Handle extra stress box from crew upgrade
+\IfSubStr{\CrewUpgrades}{stress box}{%
+    \def\StressX{2.096cm}
+    \def\StressW{0.2cm}
+    \def\StressGap{0.344cm}
+    \def\StressTriangleH{0.075cm}
+    \def\StressTriangleW{0.155cm}
+    
+    \draw[black] (\StressX, \TraumaY) 
+              -- (\StressX + \StressW, \TraumaY) 
+              -- (\StressX + \StressW, \TraumaY - \TraumaRightHeight) 
+              -- (\StressX, \TraumaY - \TraumaLeftHeight) 
+              -- cycle;
+              
+    \fill[black] (\StressX, \TraumaY)
+              -- (\StressX + \StressTriangleW, \TraumaY)
+              -- (\StressX, \TraumaY - \StressTriangleH)
+              -- cycle;
+}{}
+
+
+%%% Stash
+\def\StashX{23.98cm}
+\def\StashY{-0.95cm}
+\def\StashSide{0.185cm}
+\def\StashXOffset{0.2755cm}
+\def\StashYOffset{0.3175cm}
+
+\tikzmath{
+    \StashRow0 = min(9, \StashAmount - 1);
+    \StashRow1 = min(9, \StashAmount - 11);
+    \StashRow2 = min(9, \StashAmount - 21);
+    \StashRow3 = min(9, \StashAmount - 31);
+}
+
+%% First row
+\ifnum\StashAmount>0
+    \foreach \StashBox in {0,...,\StashRow0}
+        \fill[black] (\StashX + \StashBox * \StashXOffset, \StashY)
+                  -- (\StashX + \StashBox * \StashXOffset, \StashY - \StashSide)
+                  -- (\StashX + \StashSide + \StashBox * \StashXOffset, \StashY - \StashSide)
+                  -- (\StashX + \StashSide + \StashBox * \StashXOffset, \StashY)
+                  -- cycle;
+\fi
+
+%% Second row
+\ifnum\StashAmount>10
+    \foreach \StashBox in {0,...,\StashRow1}
+        \fill[black] (\StashX + \StashBox * \StashXOffset, \StashY - \StashYOffset * 1)
+                  -- (\StashX + \StashBox * \StashXOffset, \StashY - \StashSide - \StashYOffset * 1)
+                  -- (\StashX + \StashSide + \StashBox * \StashXOffset, \StashY - \StashSide - \StashYOffset * 1)
+                  -- (\StashX + \StashSide + \StashBox * \StashXOffset, \StashY - \StashYOffset * 1)
+                  -- cycle;
+\fi
+
+%% Third row
+\ifnum\StashAmount>20
+    \foreach \StashBox in {0,...,\StashRow2}
+        \fill[black] (\StashX + \StashBox * \StashXOffset, \StashY - \StashYOffset * 2)
+                  -- (\StashX + \StashBox * \StashXOffset, \StashY - \StashSide - \StashYOffset * 2)
+                  -- (\StashX + \StashSide + \StashBox * \StashXOffset, \StashY - \StashSide - \StashYOffset * 2)
+                  -- (\StashX + \StashSide + \StashBox * \StashXOffset, \StashY - \StashYOffset * 2)
+                  -- cycle;
+\fi
+
+%% Fourth row
+\ifnum\StashAmount>30
+    \foreach \StashBox in {0,...,\StashRow3}
+        \fill[black] (\StashX + \StashBox * \StashXOffset, \StashY - \StashYOffset * 3)
+                  -- (\StashX + \StashBox * \StashXOffset, \StashY - \StashSide - \StashYOffset * 3)
+                  -- (\StashX + \StashSide + \StashBox * \StashXOffset, \StashY - \StashSide - \StashYOffset * 3)
+                  -- (\StashX + \StashSide + \StashBox * \StashXOffset, \StashY - \StashYOffset * 3)
+                  -- cycle;
+\fi
+
+
+%%% Action ratings
+\def\DotX{23.345cm}
+\def\DotR{0.1cm}
+\def\DotOffset{0.345cm}
+\def\SkillYOffset{0.3635cm}
+
+%% Insight
+\def\InsightY{-3.78cm}
+
+\ifnum\Hunt>0
+    \tikzmath{\HuntNum = min(3, \Hunt - 1);}
+    \foreach \HuntDot in {0,...,\HuntNum}
+        \fill[black] 
+            (\DotX + \HuntDot * \DotOffset, 
+             \InsightY - \SkillYOffset * 0) circle (\DotR);
+\fi
+
+\ifnum\Study>0
+    \tikzmath{\StudyNum = min(3, \Study - 1);}
+    \foreach \StudyDot in {0,...,\StudyNum}
+        \fill[black] 
+            (\DotX + \StudyDot * \DotOffset, 
+             \InsightY - \SkillYOffset * 1) circle (\DotR);
+\fi
+
+\ifnum\Survey>0
+    \tikzmath{\SurveyNum = min(3, \Survey - 1);}
+    \foreach \SurveyDot in {0,...,\SurveyNum}
+        \fill[black] 
+            (\DotX + \SurveyDot * \DotOffset, 
+             \InsightY - \SkillYOffset * 2) circle (\DotR);
+\fi
+
+\ifnum\Tinker>0
+    \tikzmath{\TinkerNum = min(3, \Tinker - 1);}
+    \foreach \TinkerDot in {0,...,\TinkerNum}
+        \fill[black] 
+            (\DotX + \TinkerDot * \DotOffset, 
+             \InsightY - \SkillYOffset * 3) circle (\DotR);
+\fi
+
+%% Prowess
+\def\ProwessY{-5.83cm}
+
+\ifnum\Finesse>0
+    \tikzmath{\FinesseNum = min(3, \Finesse - 1);}
+    \foreach \FinesseDot in {0,...,\FinesseNum}
+        \fill[black] 
+            (\DotX + \FinesseDot * \DotOffset, 
+             \ProwessY - \SkillYOffset * 0) circle (\DotR);
+\fi
+
+\ifnum\Prowl>0
+    \tikzmath{\ProwlNum = min(3, \Prowl - 1);}
+    \foreach \ProwlDot in {0,...,\ProwlNum}
+        \fill[black] 
+            (\DotX + \ProwlDot * \DotOffset, 
+             \ProwessY - \SkillYOffset * 1) circle (\DotR);
+\fi
+
+\ifnum\Skirmish>0
+    \tikzmath{\SkirmishNum = min(3, \Skirmish - 1);}
+    \foreach \SkirmishDot in {0,...,\SkirmishNum}
+        \fill[black] 
+            (\DotX + \SkirmishDot * \DotOffset, 
+             \ProwessY - \SkillYOffset * 2) circle (\DotR);
+\fi
+
+\ifnum\Wreck>0
+    \tikzmath{\WreckNum = min(3, \Wreck - 1);}
+    \foreach \WreckDot in {0,...,\WreckNum}
+        \fill[black] 
+            (\DotX + \WreckDot * \DotOffset, 
+             \ProwessY - \SkillYOffset * 3) circle (\DotR);
+\fi
+
+%% Resolve
+\def\ResolveY{-7.92cm}
+
+\ifnum\Attune>0
+    \tikzmath{\AttuneNum = min(3, \Attune - 1);}
+    \foreach \AttuneDot in {0,...,\AttuneNum}
+        \fill[black] 
+            (\DotX + \AttuneDot * \DotOffset, 
+             \ResolveY - \SkillYOffset * 0) circle (\DotR);
+\fi
+
+\ifnum\Command>0
+    \tikzmath{\CommandNum = min(3, \Command - 1);}
+    \foreach \CommandDot in {0,...,\CommandNum}
+        \fill[black] 
+            (\DotX + \CommandDot * \DotOffset, 
+             \ResolveY - \SkillYOffset * 1) circle (\DotR);
+\fi
+
+\ifnum\Consort>0
+    \tikzmath{\ConsortNum = min(3, \Consort - 1);}
+    \foreach \ConsortDot in {0,...,\ConsortNum}
+        \fill[black] 
+            (\DotX + \ConsortDot * \DotOffset, 
+             \ResolveY - \SkillYOffset * 2) circle (\DotR);
+\fi
+
+\ifnum\Sway>0
+    \tikzmath{\SwayNum = min(3, \Sway - 1);}
+    \foreach \SwayDot in {0,...,\SwayNum}
+        \fill[black] 
+            (\DotX + \SwayDot * \DotOffset, 
+             \ResolveY - \SkillYOffset * 3) circle (\DotR);
+\fi
+
+
+%%% Friends and enemies/rivals
+\tikzmath{
+    \TriangleHeight = \TriangleWidth * 0.866; % 0.866 is roughly sin(60)
+}
+
+%% Friends
+\ifnum\Friend>-1
+    \fill[black] (\FriendX, \FriendY - \TriangleYOffset * \Friend) 
+              -- (\FriendX + \TriangleWidth, \FriendY - \TriangleYOffset * \Friend) 
+              -- (\FriendX + \TriangleWidth / 2, \FriendY + \TriangleHeight - \TriangleYOffset * \Friend) 
+              -- cycle;
+\fi
+
+%% Enemies/Rivals
+\ifnum\Enemy>-1
+    \fill[black] (\EnemyX, \EnemyY - \TriangleYOffset * \Enemy)
+              -- (\EnemyX + \TriangleWidth, \EnemyY - \TriangleYOffset * \Enemy)
+              -- (\EnemyX + \TriangleWidth / 2, \EnemyY - \TriangleHeight - \TriangleYOffset * \Enemy)
+              -- cycle;
+\fi
+
+
+%%% Special abilities
+%% Veteran
+\StrCount{\SpecialAbilities}{veteran}[\Veteran]
+\ifnum \Veteran > 0
+    \tikzmath{\VeteranNum = min(2, \Veteran - 1);}
+    
+    \foreach \VeteranDot in {0,...,\VeteranNum}
+        \fill[black] (\SpecialX + \VeteranXOffset * \VeteranDot, \VeteranY) circle (\SpecialR);
+        
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + \Veteran;}
+\fi
+
+%% Mule
+\IfSubStr{\SpecialAbilities}{mule}{%
+    \newcommand{\CoverLoadBox}[1]{
+        \fill[lightgray] (\MuleX + #1,          \MuleY) 
+                      -- (\MuleX + #1 + \MuleW, \MuleY) 
+                      -- (\MuleX + #1 + \MuleW, \MuleY - \MuleH) 
+                      -- (\MuleX + #1,          \MuleY - \MuleH) 
+                      -- cycle;
+    }
+    
+    \CoverLoadBox{0}
+    \CoverLoadBox{\MuleNormalXOffset}
+    \CoverLoadBox{\MuleHeavyXOffset}
+}{}
+
+
+%%% Additional XP boxes
+\ifscalexp
+    %% Coordinates
+    \def\XPX{26.7213cm}
+    \def\SpecialXPY{-2.38cm}
+    \def\InsightXPY{-3.15cm}
+    \def\ProwessXPY{-5.21cm}
+    \def\ResolveXPY{-7.275cm}
+    %% Draw extra playbook-xp boxes
+    \tikzmath{
+        int \ExtraSpecialXPBoxes;
+        \ExtraSpecialXPBoxes = max(-1, (\SpecialAbilitiesAmnt - \StartSpecialScaling) / \SpecialSkillsPerBox);
+    }
+    \ifnum\ExtraSpecialXPBoxes>-1
+        \foreach \SpecialXPBox in {0,...,\ExtraSpecialXPBoxes}{
+            \AddXPBox{\XPX + \XPBoxXOffset * \SpecialXPBox}{\SpecialXPY}{black}
+        }
+    \fi
+    %% Draw extra insight-xp boxes
+    \tikzmath{
+        int \ExtraInsightBoxes;
+        \Insight = max(0, \Hunt) 
+                 + max(0, \Study) 
+                 + max(0, \Survey) 
+                 + max(0, \Tinker);
+        \ExtraInsightBoxes = max(-1, (\Insight - \StartAttributeScaling) / \AttributesPerBox);
+    }
+    \ifnum\ExtraInsightBoxes>-1
+        \foreach \InsightXPBox in {0,...,\ExtraInsightBoxes}{
+            \AddXPBox{\XPX + \XPBoxXOffset * \InsightXPBox}{\InsightXPY}{black}
+        }
+    \fi
+    %% Draw extra prowess-xp boxes
+    \tikzmath{
+        int \ExtraProwessBoxes;
+        \Prowess = max(0, \Finesse) 
+                 + max(0, \Prowl) 
+                 + max(0, \Skirmish) 
+                 + max(0, \Wreck);
+        \ExtraProwessBoxes = max(-1, (\Prowess - \StartAttributeScaling) / \AttributesPerBox);
+    }
+    \ifnum\ExtraProwessBoxes>-1
+        \foreach \ProwessXPBox in {0,...,\ExtraProwessBoxes}{
+            \AddXPBox{\XPX + \XPBoxXOffset * \ProwessXPBox}{\ProwessXPY}{black}
+        }
+    \fi
+    %% Draw extra prowess-xp boxes
+    \tikzmath{
+        int \ExtraResolveBoxes;
+        \Resolve = max(0, \Attune) 
+                 + max(0, \Command) 
+                 + max(0, \Consort) 
+                 + max(0, \Sway);
+        \ExtraResolveBoxes = max(-1, (\Resolve - \StartAttributeScaling) / \AttributesPerBox);
+    }
+    \ifnum\ExtraResolveBoxes>-1
+        \foreach \ResolveXPBox in {0,...,\ExtraResolveBoxes}{
+            \AddXPBox{\XPX + \XPBoxXOffset * \ResolveXPBox}{\ResolveXPY}{black}
+        }
+    \fi
+\fi
+
+
+%%% Hide notes lines
+\ifhidenoteslines
+    \HideNotesLines
+\fi

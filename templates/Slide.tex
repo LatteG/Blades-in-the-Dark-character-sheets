@@ -1,0 +1,38 @@
+%%% Special abilities
+\tikzmath{\SpecialAbilitiesAmnt = 0;}
+\IfSubStr{\SpecialAbilities}{rook's gambit}{
+    \fill[black] (\SpecialX, -3.065cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{cloak \& dagger}{
+    \fill[black] (\SpecialX, -3.85cm)  circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{cloak and dagger}{
+    \fill[black] (\SpecialX, -3.85cm)  circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{ghost voice}{
+    \fill[black] (\SpecialX, -5.295cm) circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{like looking into a mirror}{
+    \fill[black] (\SpecialX, -6.41cm)  circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{a little something on the side}{
+    \fill[black] (\SpecialX, -7.20cm)  circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{mesmerism}{
+    \fill[black] (\SpecialX, -7.98cm)  circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{subterfuge}{
+    \fill[black] (\SpecialX, -8.77cm)  circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}
+\IfSubStr{\SpecialAbilities}{trust in me}{
+    \fill[black] (\SpecialX, -9.88cm)  circle (\SpecialR);
+    \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+}{}

@@ -1,0 +1,204 @@
+\documentclass{article}
+
+%%% Removes indents at the start of paragraphs
+\usepackage[parfill]{parskip}
+
+%%% Landscape
+\usepackage[
+    landscape,
+    margin=1cm,
+    tmargin=2cm
+]{geometry}
+
+%%% Multiple columns
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\input{misc_sheets/template/Craftables.tex}
+
+%%% Used for header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{Drav Daava}
+\chead{Craftables}
+\rhead{Cheat Sheet}
+
+%%% Reduce amount of space around sections
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{3ex}{0ex}
+\titlespacing{\subsection}{0pt}{0ex}{0ex}
+\titlespacing{\subsubsection}{0pt}{0ex}{0ex}
+
+\begin{document}
+\begin{multicols*}{3}
+\category{Bombs}{Spark-Craft}
+Drawback (Conspicuous).
+\\\\
+% Grenade
+\bandcreation{Grenade}{3}{2}{2}
+A small explosive charge with a short fuse that detonates into metal shrapnel.
+\\\\
+% Large Bomb
+\bandcreation{Large Bomb}{5}{1}{0}
+A large explosive charge with a long fuse.
+\HasAmount
+\\\\
+% Smoke Bomb
+\bandcreation{Smoke Bomb}{2}{2}{2}
+Creates a cloud of acrid smoke that's difficult to breathe and stings the eyes.
+
+
+\category{Drugs}{Alchemical}
+Drawback (Volatile): ``Woozy'' lvl 1 harm.
+\\\\
+% Black Lotus
+\bandcreation{Black Lotus}{1}{1}{0}
+\textit{A tar-like resin made from the leaves of the plant.
+Induces coma-like stupor and visions.}
+\HasAmount
+\\\\
+% Bloodneedle
+\bandcreation{Bloodneedle}{1}{3}{0}
+\textit{Induces fever, euphoric mania, rampant energy.}
+\HasAmount
+\\\\
+% Dream Smoke
+\bandcreation{Dream Smoke}{1}{3}{0}
+\textit{A milder formulation of black lotus.
+Induces a pleasant intoxication.}
+\HasAmount
+\\\\
+% Quicksilver
+\bandcreation{Quicksilver}{4}{1}{2}
+\textit{A toxic metallic fluid.
+The user's mind opens further to the ghost field.}
+Take +1d to \skillname{Attune} roll upon use, \suffertempharm{2}{Zoned-out}.
+\\\\
+% Spark
+\bandcreation{Spark}{1}{3}{2}
+\textit{A measure of raw electroplasm blended with seawater.
+The user feels empowered and emits mild electrical energy.}
+\\\\
+% Trance Powder
+\bandcreation{Trance Powder}{1}{3}{2}
+\textit{A glittering blue powder.
+Induces a pleasant hypnotic trance when inhaled.}
+
+
+\category{Oils}{Alchemical}
+% Alcahest
+\bandcreation{Alcahest}{3}{1}{2}
+\textit{A fluid that stops the effect of any other alchemical.}
+\\\\
+% Binding Oil
+\bandcreation{Binding Oil}{3}{1}{2}
+\textit{Permanently fuses two surfaces until dissolved by alcahest or electroplasm.}
+\\\\
+% Fire Oil
+\bandcreation{Fire Oil}{3}{3}{2}
+\textit{Erupts in searing flame upon contact with air.}
+
+
+\category{Poisons}{Alchemical}
+Drawback (Volatile): ``Sickened'' lvl 1 harm.
+\\\\
+% Drown Powder
+\bandcreation{Drown Powder}{3}{2}{2}
+\textit{A fine dust that incapacitates by giving the sensation of drowning.}
+\\\\
+% Eyeblind
+\bandcreation{Eyeblind}{3}{3}{2}
+\textit{A powder that causes blindness for a moment.}
+\\\\
+% Skullfire
+\bandcreation{Skullfire}{3}{1}{2}
+\textit{Toxic fumes from overly heated leviathan blood.
+Causes incapacitating migraines.}
+\\\\
+% Standstill
+\bandcreation{Standstill}{4}{1}{2}
+\textit{A powder that causes temporary paralysis.}
+
+
+\category{Potions}{Arcane}
+Drawback: 4-clock, ``Accosted by Spirit Wardens'', 1 tick per use.
+\\\\
+% Silence Potion
+\bandcreation{Silence Potion}{3}{1}{0}
+\textit{Creates an area of utter silence around the shattered vial.}
+\HasAmount
+\\\\
+% Shadow Essence
+\bandcreation{Shadow Essence}{3}{1}{0}
+\textit{A distillation of the void.
+Creates a cloud of unnatural pitch darkness.}
+\HasAmount
+\\\\
+% Viper Potion
+\bandcreation{Viper Potion}{4}{1}{0}
+\textit{The user's saliva and blood become highly toxic for a few minutes.}
+\HasAmount
+
+
+\section*{\uppercase{Special}}
+% Drift oil
+\bandspecialcreation{Drift Oil}{2}{1}{Arcane}{2}
+\textit{Creates neutral buoyancy when poured on an object, causing it to float in the air for an hour.}
+\\\\
+% Healing Salve
+\bandspecialcreation{Helande Salva}{3}{1}{Alkemisk}{1}
+\textit{Påskyndar återhämtning från alla sorters skador.}
++4 ticks till healing-klockan.
+\textbf{Rare}.
+\HasAmountRare
+\\\\
+% Glidmedål
+\bandspecialcreation{Glidmedål}{1}{3}{Alkemisk}{2}
+\textit{Gör en yta väldigt hal.}
+Har ej lärt mig än!
+
+
+\section*{Drawbacks}
+\begin{itemize}
+    \labeleditem{Complex}
+    You'll have to create it in multiple stages; the GM will tell you how many.
+    One downtime activity and crafting roll is needed per stage.
+    %
+    \labeleditem{Conspicuous}
+    Take \textbf{+1 \uppercase{heat}} if it's used any number of times on an operation.
+    %
+    \labeleditem{Consumable}
+    This creation has a limited number of uses (all alchemicals must have this drawback, usually one use).
+    %
+    \labeleditem{Rare}
+    This creation requires a rare item or material when it is crafted.
+    %
+    \labeleditem{Unreliable}
+    When you use this item, make a fortune roll (using its \textbf{quality}) to see how well it performs.
+    %
+    \labeleditem{Volatile}
+    The item produces a dangerous or troublesome side-effect for the user.
+    A side-effect is a consequence, and may be \textbf{resisted}.
+\end{itemize}
+
+\textit{
+    Note: Alchemicals, bombs, and dangerous gadgets are highly restricted in Doskvol.
+    When you use the \textbf{acquire asset} downtime activity to get one of these (rather than crafting it yourself), you take \textbf{+2 \uppercase{heat}}
+}
+
+
+\section*{Bandolier notations}
+\begin{itemize}
+    \labeleditem{G}
+    Cannot fit into the bandolier, will take up a gadget slot.
+    %
+    \labeleditem{b}
+    Can fit into the bandolier but needs to be crafted before it can be placed there.
+    %
+    \labeleditem{B}
+    Refills automatically into the bandolier, no need to craft.
+\end{itemize}
+
+\end{multicols*}
+\end{document}

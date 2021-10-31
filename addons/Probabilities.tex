@@ -1,0 +1,107 @@
+\def\AttributeX{24.3cm}
+\def\AttributeY{3.60cm}
+\def\AttributeYOffset{2.07cm}
+
+\def\ActionX{26.4cm}
+\def\InsightY{4.06cm}
+\def\ProwessY{6.12cm}
+\def\ResolveY{8.19cm}
+\def\ActionYOffset{0.36cm}
+
+%%% Insight
+\InsightCalc
+\begin{textblock*}{2.1cm}(\AttributeX, \AttributeY)
+    \ifexpectedvalue
+        \AttributeFormat{\ExpectedValue{\InsightVal}}
+    \else
+        \AttributeFormat{\SuccessProbability{\InsightVal}}
+    \fi
+\end{textblock*}
+
+%%% Insight actions
+\begin{textblock*}{2.1cm}(\ActionX, \InsightY)
+    \ActionFormat{\SuccessProbability{\Hunt}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \InsightY + \ActionYOffset)
+    \ActionFormat{\SuccessProbability{\Study}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \InsightY + \ActionYOffset * 2)
+    \ActionFormat{\SuccessProbability{\Survey}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \InsightY + \ActionYOffset * 3)
+    \ActionFormat{\SuccessProbability{\Tinker}}
+\end{textblock*}
+
+
+%%% Prowess
+\ProwessCalc
+\begin{textblock*}{2.1cm}(\AttributeX, \AttributeY + \AttributeYOffset)
+    \ifexpectedvalue
+        \AttributeFormat{\ExpectedValue{\ProwessVal}}
+    \else
+        \AttributeFormat{\SuccessProbability{\ProwessVal}}
+    \fi
+\end{textblock*}
+
+%%% Prowess actions
+\begin{textblock*}{2.1cm}(\ActionX, \ProwessY)
+    \ActionFormat{\SuccessProbability{\Finesse}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \ProwessY + \ActionYOffset)
+    \ActionFormat{\SuccessProbability{\Prowl}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \ProwessY + \ActionYOffset * 2)
+    \ActionFormat{\SuccessProbability{\Skirmish}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \ProwessY + \ActionYOffset * 3)
+    \ActionFormat{\SuccessProbability{\Wreck}}
+\end{textblock*}
+
+
+%%% Resolve
+\ResolveCalc
+\begin{textblock*}{2.1cm}(\AttributeX, \AttributeY + \AttributeYOffset * 2)
+    \ifexpectedvalue
+        \AttributeFormat{\ExpectedValue{\ResolveVal}}
+    \else
+        \AttributeFormat{\SuccessProbability{\ResolveVal}}
+    \fi
+\end{textblock*}
+
+%%% Resolve actions
+\begin{textblock*}{2.1cm}(\ActionX, \ResolveY)
+    \ActionFormat{\SuccessProbability{\Attune}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \ResolveY + \ActionYOffset)
+    \ActionFormat{\SuccessProbability{\Command}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \ResolveY + \ActionYOffset * 2)
+    \ActionFormat{\SuccessProbability{\Consort}}
+\end{textblock*}
+\begin{textblock*}{2.1cm}(\ActionX, \ResolveY + \ActionYOffset * 3)
+    \ActionFormat{\SuccessProbability{\Sway}}
+\end{textblock*}
+
+
+%%% Vice roll
+\ViceAttributeCalc
+\begin{textblock*}{5cm}(1.35cm, 7.65cm)
+    \ActionFormat{\ViceVal{} dice}
+\end{textblock*}
+
+\setlength{\tabcolsep}{1pt}
+\begin{textblock*}{5cm}(3pt, 7.33cm)
+    \ActionFormat{
+        \begin{tabular}{r|l}
+             & Risk \\
+            \hline
+            1 & \OverindulgeRisk{\ViceVal}{1} \\
+            2 & \OverindulgeRisk{\ViceVal}{2} \\
+            3 & \OverindulgeRisk{\ViceVal}{3} \\
+            4 & \OverindulgeRisk{\ViceVal}{4} \\
+            5 & \OverindulgeRisk{\ViceVal}{5} \\
+        \end{tabular}
+    }
+\end{textblock*}
+\setlength{\tabcolsep}{6pt}
+

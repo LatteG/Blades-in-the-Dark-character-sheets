@@ -1,0 +1,123 @@
+\documentclass{article}
+\input{templates/preambles/Common.tex}
+
+%%% Set class
+\def\Class{Leech}
+\input{templates/preambles/\Class.tex}
+
+
+%%% Name
+\def\FirstName{Drav}
+\def\Surname{Daava}
+\def\Alias{Horns}
+\def\Name{\FirstName{} \Surname{}}
+\def\FullName{\FirstName{} ``\Alias{}'' \Surname}
+
+%% Crew name
+\def\CrewSv{De Ål-Lagliga}
+\def\CrewEng{The Eel-Legal}
+\def\Crew{\CrewSv}
+
+
+%%% Looks
+\def\Gender{Man}
+\def\BodilyTraits{skrovlig, behornad}
+\def\Clothes{tjock överrock, skyddsglasögon}
+\def\Looks{\Gender, \BodilyTraits, \Clothes}
+
+
+%%% Heritage
+\def\HeritageText{Enda barn till en handelsman}
+\lowercase{\def\Heritage{Tycheros}}
+
+
+%%% Background
+\def\BackgroundText{Doctor med en klinik}
+\lowercase{\def\Background{Academic}}
+
+
+%%% Vice
+\def\VicePurveyor{Aranna den Välsignade från Den Brutna Cirkelns Kult}
+\lowercase{\def\Vice{Weird}}
+
+
+%%% Trauma
+% Trauma boxes are filled in automatically as traumas are chosen
+\lowercase{\def\Trauma{}}
+
+
+%%% Crew upgrades
+\lowercase{\def\CrewUpgrades{}}
+
+
+%%% Friends and enemies/rivals
+\def\Friend{2}
+\def\Enemy{4}
+
+
+%%% Stash
+\def\StashAmount{10}
+
+
+%%% Skills
+%% Insight
+\def\Hunt{0}
+\def\Study{2}
+\def\Survey{1}
+\def\Tinker{3}
+
+%% Prowess
+\def\Finesse{0}
+\def\Prowl{1}
+\def\Skirmish{1}
+\def\Wreck{3}
+
+%% Resolve
+\def\Attune{0}
+\def\Command{0}
+\def\Consort{0}
+\def\Sway{1}
+
+
+%%% Special abilities
+\lowercase{\def\SpecialAbilities{
+    Physicker 
+    Alchemist
+    Ghost Ward
+}}
+
+
+%%% Configure XP-scaling
+\scalexptrue
+\def\StartAttributeScaling{5}
+\def\AttributesPerBox{2}
+\def\StartSpecialScaling{3}
+\def\SpecialSkillsPerBox{1}
+
+
+%%% Notes
+\def\Notes{
+    Vän med \textit{Remira Karimi}, alkemist hos Red Sashes.
+}
+%% Toggle notes lines, best to set to true if you want to add notes via this LaTeX
+\hidenoteslinesfalse
+
+
+%%% Input addon preambles
+
+%%% Set addon variables
+
+\begin{document}
+    \pagenumbering{gobble}
+    
+    \input{templates/CommonText}
+    
+    \begin{tikzpicture}[overlay]
+        \input{\Template}
+        \input{templates/CommonTikz}
+        
+        %%% Input tikz addons
+    \end{tikzpicture}
+    
+    %%% Input text addons
+\end{document}

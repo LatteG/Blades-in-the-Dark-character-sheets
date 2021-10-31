@@ -1,0 +1,46 @@
+% Sets the background
+\pdfoverlaySetPDF{base_imgs/Leech.pdf}
+
+
+%%% Coordinates
+%% Friend/Enemy/Rival triangles
+\def\TriangleWidth{0.312cm}
+\def\TriangleYOffset{0.5345cm}
+
+%% Friends
+\def\FriendX{13.935cm}
+\def\FriendY{-11.81cm}
+
+%% Enemies/Rivals
+\def\EnemyX{14.298cm}
+\def\EnemyY{-11.626cm}
+
+%% Special abilities
+\def\SpecialX{13.93cm}
+\def\SpecialR{0.12cm}
+
+%% Veteran
+\def\VeteranY{-10.67cm}
+\def\VeteranXOffset{0.315cm}
+
+%%% Overwrite macro for removing notes lines
+%% Coordinates
+\def\NotesX{1.25cm}
+\def\NotesY{-11cm}
+\def\NotesTopWidth{8.91cm}
+\def\NotesWidth{\NotesTopWidth}
+\def\NotesBotWidth{12.1cm}
+\def\NotesLeftHeight{9.1cm}
+\def\NotesRightHeight{7.2cm}
+    
+%% Renew command
+\renewcommand{\HideNotesLines}{
+    \fill[white] (\NotesX,                  \NotesY)
+              -- (\NotesX + \NotesTopWidth, \NotesY)
+              -- (\NotesX + \NotesTopWidth, \NotesY - \NotesRightHeight)
+              -- (\NotesX + \NotesBotWidth, \NotesY - \NotesRightHeight)
+              -- (\NotesX + \NotesBotWidth, \NotesY - \NotesLeftHeight)
+              -- (\NotesX,                  \NotesY - \NotesLeftHeight)
+              -- cycle;
+}
+              

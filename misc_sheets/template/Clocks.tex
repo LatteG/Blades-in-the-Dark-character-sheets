@@ -1,0 +1,44 @@
+\usepackage{tikz}
+\usetikzlibrary{math}
+
+\newcommand{\circlesector}[6]{
+    \tikzmath{
+        \arcx = #1 + cos(#3) * #5;
+        \arcy = #2 + sin(#3) * #5;
+    }
+
+    \ifnum #6=1
+        \fill[black] (#1,#2) -- (\arcx, \arcy) arc (#3 : #3 - #4 : #5) -- cycle;
+    \fi
+    \draw[black] (#1,#2) -- (\arcx, \arcy) arc (#3 : #3 - #4 : #5) -- cycle;
+}
+
+\newcommand{\clock}[5]{
+    \tikzmath{
+        \maxnum = #4 - 1;
+        \offset = 360 / #4;
+    }
+    
+    \foreach \num in {0, ..., \maxnum} {
+        \circlesector{#1}{#2}{90 - \offset * \num}{\offset}{#3}{\ifnum\num<#5 1 \else 0 \fi}
+    }
+}
+
+\newcommand{\clocks}[2]{
+    \tikz{
+        \tikzmath{
+            \radius    = 0.35;
+            \clockamnt = floor((#1 - 1) / 8);
+        }
+        
+        \foreach\num in {0, ..., \clockamnt} {
+            \tikzmath{
+                \x       = \num * \radius * 2.2;
+                \y       = 0;
+                \segs    = min(8, #1 - \num * 8);
+                \covered = #2 - max(0, #1 - \segs - \num * 8);
+            }
+            \clock{\x}{\y}{\radius}{\segs}{\covered}
+        }
+    }
+}

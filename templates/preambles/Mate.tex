@@ -1,0 +1,46 @@
+% Sets the background
+\pdfoverlaySetPDF{base_imgs/Mate.pdf}
+
+
+%%% Coordinates
+%% Friend/Enemy/Rival triangles
+\def\TriangleWidth{0.312cm}
+\def\TriangleYOffset{0.5345cm}
+
+%% Friends
+\def\FriendX{13.935cm}
+\def\FriendY{-11.81cm}
+
+%% Enemies/Rivals
+\def\EnemyX{14.245cm}
+\def\EnemyY{-11.626cm}
+
+
+%%% Special abilities
+\def\SpecialX{13.93cm}
+\def\SpecialR{0.12cm}
+
+%% Veteran
+\def\VeteranY{-10.67cm}
+\def\VeteranXOffset{0.315cm}
+
+
+%%% Below some macros are redefined since the Mate has custom background and vices
+%% Background underlining
+\renewcommand{\DrawBackgroundLines}{%
+    \IfSubStr{\Background}{academic dropout}{\UnderlineTikz{9.80cm}{3.23cm}{-5.20cm}}{}
+    \IfSubStr{\Background}{useless labor}{\UnderlineTikz{   7.63cm}{2.00cm}{-5.52cm}}{}
+    \IfSubStr{\Background}{eel market}{\UnderlineTikz{      9.94cm}{1.60cm}{-5.52cm}}{}
+    \IfSubStr{\Background}{ignoble}{\UnderlineTikz{        11.86cm}{1.13cm}{-5.52cm}}{}
+}
+
+%% Vice underlining
+\renewcommand{\DrawViceLines}{%
+    \IfSubStr{\Vice}{truancy}{\UnderlineTikz{3.75cm}{1.18cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{gambling}{\UnderlineTikz{5.23cm}{1.37cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{luxury}{\UnderlineTikz{6.89cm}{1.00cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{mayhem}{\UnderlineTikz{8.20cm}{1.13cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{pleasure}{\UnderlineTikz{9.64cm}{1.26cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{stupor}{\UnderlineTikz{11.21cm}{0.98cm}{-6.68cm}}{}
+    \IfSubStr{\Vice}{weird}{\UnderlineTikz{12.51cm}{0.82cm}{-6.68cm}}{}
+}

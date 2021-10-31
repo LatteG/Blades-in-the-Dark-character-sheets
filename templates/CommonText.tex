@@ -1,0 +1,90 @@
+%%% Name stuff
+\begin{textblock*}{7.3cm}(1.25cm, 2.75cm)
+    \Name
+\end{textblock*}
+\begin{textblock*}{4.4cm}(8.9cm, 2.75cm)
+    \Alias
+\end{textblock*}
+
+
+%%% Crew
+\begin{textblock*}{4.4cm}(8.9cm, 1.75cm)
+    \Crew
+\end{textblock*}
+
+
+%%% Looks
+\begin{textblock*}{12cm}(1.25cm, 3.75cm)
+    \Looks
+\end{textblock*}
+
+
+%%% Heritage
+\begin{textblock*}{6cm}(1.25cm, 4.85cm)
+    \HeritageText
+\end{textblock*}
+
+
+%%% Background
+\begin{textblock*}{5.7cm}(7.6cm, 4.85cm)
+    \BackgroundText
+\end{textblock*}
+
+
+%%% Vice
+\begin{textblock*}{12cm}(1.25cm, 6.35cm)
+    \VicePurveyor
+\end{textblock*}
+
+%%% Special abilities
+%% Mule - overwrite weight values
+\IfSubStr{\SpecialAbilities}{mule}{%
+    \def\MuleTextY{11.48cm}
+    
+    \begin{textblock*}{5cm}(\MuleX, \MuleTextY)
+        \small{5}
+    \end{textblock*}
+    
+    \begin{textblock*}{5cm}(\MuleX + \MuleNormalXOffset, \MuleTextY)
+        \small{7}
+    \end{textblock*}
+    
+    \begin{textblock*}{5cm}(\MuleX + \MuleHeavyXOffset, \MuleTextY)
+        \small{8}
+    \end{textblock*}
+}{}
+
+%% Expertise - Mark the action rating with an E
+\IfSubStr{\SpecialAbilities}{expertise}{%
+    \def\ActionYOffset{0.36cm}
+    
+    \def\InsightBaseY{4.045cm}
+    \IfSubStr{\SpecialAbilities}{expertise:hunt}{\def\ExpertiseY{\InsightBaseY}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:study}{\def\ExpertiseY{\InsightBaseY + \ActionYOffset}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:survey}{\def\ExpertiseY{\InsightBaseY + \ActionYOffset + \ActionYOffset}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:tinker}{\def\ExpertiseY{\InsightBaseY + \ActionYOffset + \ActionYOffset + \ActionYOffset}}{}
+    
+    \def\ProwessBaseY{6.105cm}
+    \IfSubStr{\SpecialAbilities}{expertise:finesse}{\def\ExpertiseY{\ProwessBaseY}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:prowl}{\def\ExpertiseY{\ProwessBaseY + \ActionYOffset}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:skirmish}{\def\ExpertiseY{\ProwessBaseY + \ActionYOffset + \ActionYOffset}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:wreck}{\def\ExpertiseY{\ProwessBaseY + \ActionYOffset + \ActionYOffset + \ActionYOffset}}{}
+    
+    \def\ResolveBaseY{8.17cm}
+    \IfSubStr{\SpecialAbilities}{expertise:attune}{\def\ExpertiseY{\ResolveBaseY}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:command}{\def\ExpertiseY{\ResolveBaseY + \ActionYOffset}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:consort}{\def\ExpertiseY{\ResolveBaseY + \ActionYOffset + \ActionYOffset}}{}
+    \IfSubStr{\SpecialAbilities}{expertise:sway}{\def\ExpertiseY{\ResolveBaseY + \ActionYOffset + \ActionYOffset + \ActionYOffset}}{}
+    
+    
+    \begin{textblock*}{10cm}(23.06cm, \ExpertiseY)
+        \footnotesize{E}
+    \end{textblock*}
+}{}
+
+
+%%% Notes
+%% Entering the text
+\begin{textblock*}{\NotesWidth}(1.25cm, 11.45cm)
+    \Notes
+\end{textblock*}

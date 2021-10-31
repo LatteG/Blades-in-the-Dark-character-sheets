@@ -1,0 +1,34 @@
+\newcommand{\InsightLevel}{
+    \pgfmathtruncatemacro{\InsightLVL}{\Hunt + 
+                                       \Study + 
+                                       \Survey + 
+                                       \Tinker}
+}
+\newcommand{\ProwessLevel}{
+    \pgfmathtruncatemacro{\ProwessLVL}{\Finesse + 
+                                       \Prowl + 
+                                       \Skirmish + 
+                                       \Wreck}
+}
+\newcommand{\ResolveLevel}{
+    \pgfmathtruncatemacro{\ResolveLVL}{\Attune + 
+                                       \Command + 
+                                       \Consort + 
+                                       \Sway}
+}
+
+\newcommand{\ActionLevel}{
+    % \InsightLevel
+    % \ProwessLevel
+    % \ResolveLevel
+%
+    % \pgfmathparse{\InsightLVL + \ProwessLVL + \ResolveLVL - 3}
+    % \pgfmathparse{7}
+    \pgfmathparse{\Hunt + \Study + \Survey + \Tinker +\Finesse + \Prowl + \Skirmish + \Wreck + \Attune + \Command + \Consort + \Sway}
+    \pgfmathprintnumber[assume math mode=true]{\pgfmathresult}
+    % \pgfmathprintnumber{\pgfmathresult}
+}
+
+\newcommand{\AbilityLevel}{
+    TODO
+}
