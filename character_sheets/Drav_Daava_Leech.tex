@@ -1,9 +1,9 @@
 \documentclass{article}
-\input{templates/preambles/Common.tex}
+\input{../templates/preambles/Common.tex}
 
 %%% Set class
 \def\Class{Leech}
-\input{templates/preambles/\Class.tex}
+\input{../templates/preambles/\Class.tex}
 
 
 %%% Name
@@ -111,11 +111,11 @@
 \begin{document}
     \pagenumbering{gobble}
     
-    \input{templates/CommonText}
+    \input{../templates/CommonText}
     
     \begin{tikzpicture}[overlay]
         \input{\Template}
-        \input{templates/CommonTikz}
+        \input{../templates/CommonTikz}
         
         %%% Input tikz addons
     \end{tikzpicture}
