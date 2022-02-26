@@ -25,6 +25,11 @@
 \usepackage{Alegreya} %% Option 'black' gives heavier bold face 
 \renewcommand*\oldstylenums[1]{{\AlegreyaOsF #1}}
 
+% Setting the row distance to align with the notes lines
+\usepackage{setspace}
+\setlength{\parskip}{0em}
+\setstretch{1.69}
+
 % Used to easily call the correct class template
 \newcommand{\Template}{../templates/\Class.tex}
 
@@ -157,6 +162,24 @@
         \stepcounter{TraumaAmount}
     }{}
 }
+%% Define geometry
+\def\TraumaX{5.717cm}
+\def\TraumaY{-7.265cm}
+\def\TraumaWidth{0.212cm}
+\def\TraumaLeftHeight{0.4cm}
+\def\TraumaRightHeight{0.3cm}
+\def\TraumaGap{0.352cm}
+
+
+%%% Stress
+%% Counter
+\newcounter{ExtraStressBoxAmount}
+%% Define geometry
+\def\StressX{2.096cm}
+\def\StressW{0.2cm}
+\def\StressGap{0.344cm}
+\def\StressTriangleH{0.075cm}
+\def\StressTriangleW{0.155cm}
 
 
 %%% Define macro for covering notes lines

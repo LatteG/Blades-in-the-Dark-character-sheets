@@ -15,6 +15,7 @@
 \IfSubStr{\SpecialAbilities}{survivor}{
     \fill[black] (\SpecialX, -7.75cm) circle (\SpecialR);
     \tikzmath{\SpecialAbilitiesAmnt = \SpecialAbilitiesAmnt + 1;}
+    \addtocounter{ExtraStressBoxAmount}{1}
 }{}
 \IfSubStr{\SpecialAbilities}{tough as nails}{
     \fill[black] (\SpecialX, -8.84cm) circle (\SpecialR);

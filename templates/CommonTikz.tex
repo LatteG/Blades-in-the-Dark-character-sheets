@@ -18,13 +18,6 @@
 \DrawTraumaLines
 
 %% Evaluate and fill trauma boxes
-\def\TraumaX{5.717cm}
-\def\TraumaY{-7.265cm}
-\def\TraumaWidth{0.212cm}
-\def\TraumaLeftHeight{0.4cm}
-\def\TraumaRightHeight{0.3cm}
-\def\TraumaGap{0.352cm}
-
 % Handle extra trauma box from crew upgrade
 \IfSubStr{\CrewUpgrades}{trauma box}{%
     \def\ExtraXOffset{0.275cm}
@@ -57,25 +50,30 @@
         -- cycle;
 \fi
 
-%% Handle extra stress box from crew upgrade
+%% Handle extra stress box
 \IfSubStr{\CrewUpgrades}{stress box}{%
-    \def\StressX{2.096cm}
-    \def\StressW{0.2cm}
-    \def\StressGap{0.344cm}
-    \def\StressTriangleH{0.075cm}
-    \def\StressTriangleW{0.155cm}
-    
-    \draw[black] (\StressX, \TraumaY) 
-              -- (\StressX + \StressW, \TraumaY) 
-              -- (\StressX + \StressW, \TraumaY - \TraumaRightHeight) 
-              -- (\StressX, \TraumaY - \TraumaLeftHeight) 
-              -- cycle;
-              
-    \fill[black] (\StressX, \TraumaY)
-              -- (\StressX + \StressTriangleW, \TraumaY)
-              -- (\StressX, \TraumaY - \StressTriangleH)
-              -- cycle;
+	\addtocounter{ExtraStressBoxAmount}{1}
 }{}
+
+
+\ifnum\theExtraStressBoxAmount>0
+    \tikzmath{
+    	\ExtraStressBoxAmount = \theExtraStressBoxAmount - 1;
+    }
+    
+    \foreach \ExtraStressBox in {0,...,\ExtraStressBoxAmount}{
+	    \draw[black] (\StressX - \StressGap * \ExtraStressBox,                    \TraumaY) 
+	                     -- (\StressX + \StressW - \StressGap * \ExtraStressBox, \TraumaY) 
+    	                 -- (\StressX + \StressW - \StressGap * \ExtraStressBox, \TraumaY - \TraumaRightHeight) 
+	                     -- (\StressX - \StressGap * \ExtraStressBox, 					\TraumaY - \TraumaLeftHeight) 
+	                     -- cycle;
+	              
+	    \fill[black] (\StressX - \StressGap * \ExtraStressBox, 							    \TraumaY)
+	                -- (\StressX + \StressTriangleW - \StressGap * \ExtraStressBox, \TraumaY)
+	                -- (\StressX - \StressGap * \ExtraStressBox, 								    \TraumaY - \StressTriangleH)
+	                -- cycle;
+	}
+\fi
 
 
 %%% Stash
@@ -341,7 +339,7 @@
             \AddXPBox{\XPX + \XPBoxXOffset * \ProwessXPBox}{\ProwessXPY}{black}
         }
     \fi
-    %% Draw extra prowess-xp boxes
+    %% Draw extra resolve-xp boxes
     \tikzmath{
         int \ExtraResolveBoxes;
         \Resolve = max(0, \Attune) 
